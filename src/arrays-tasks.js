@@ -168,11 +168,7 @@ function isSameLength(arr) {
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
 function isValueEqualsIndex(arr) {
-  const newArr = arr.filter((e, i) => e === i);
-  if (newArr) {
-    return true;
-  }
-  return false;
+  return arr.some((e, i) => e === i);
 }
 
 /**
@@ -312,8 +308,9 @@ function flattenArray(nestedArray) {
  *   selectMany([[1, 2], [3, 4], [5, 6]], (x) => x) =>   [ 1, 2, 3, 4, 5, 6 ]
  *   selectMany(['one','two','three'], (x) => x.split('')) =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  const newArr = arr.map((e) => childrenSelector(e));
+  return newArr.flat();
 }
 
 /**
