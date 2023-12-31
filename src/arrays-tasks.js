@@ -50,7 +50,8 @@ function sumArrays(arr1, arr2) {
   } else if (arr2.length > arr1.length) {
     arr1.push(0);
   }
-  return arr1.map((e, i) => e + arr2[i]);
+  const newArr = arr1.map((e, i) => e + arr2[i]);
+  return newArr;
 }
 
 /**
@@ -186,7 +187,7 @@ function isValueEqualsIndex(arr) {
  *    insertItem([ 1, 'b', 'c'], 'x', 0) => [ 'x', 1, 'b', 'c' ]
  */
 function insertItem(arr, item, index) {
-  return arr.slice(0, index).concat(item).concat(arr.slice(item, arr.length));
+  return arr.splice(index, 0, item);
 }
 
 /**
