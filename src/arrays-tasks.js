@@ -42,12 +42,19 @@ function getIntervalArray(start, end) {
  */
 function sumArrays(arr1, arr2) {
   if (arr1.length > arr2.length) {
-    arr2.push(0);
-  } else if (arr2.length > arr1.length) {
-    arr1.push(0);
+    return arr1.map((e, i) => {
+      if (arr2[i]) {
+        return e + arr2[i];
+      }
+      return e;
+    });
   }
-  const newArr = arr1.map((e, i) => e + arr2[i]);
-  return newArr;
+  return arr2.map((e, i) => {
+    if (arr1[i]) {
+      return e + arr1[i];
+    }
+    return e;
+  });
 }
 
 /**
