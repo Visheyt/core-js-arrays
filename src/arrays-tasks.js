@@ -21,14 +21,10 @@
  *    getIntervalArray(3, 3) => [ 3 ]
  */
 function getIntervalArray(start, end) {
-  const length = Math.abs(start - end) + 1;
-  const newArr = new Array(length).fill(0);
-  let num = start - 1;
-  const resultArr = newArr.map((e) => {
-    num += 1;
-    return e + num;
-  });
-  return resultArr;
+  const newArr = new Array(Math.abs(start - end) + 1)
+    .fill(0)
+    .map((e, i) => e + start + i);
+  return newArr;
 }
 
 /**
@@ -309,8 +305,7 @@ function flattenArray(nestedArray) {
  *   selectMany(['one','two','three'], (x) => x.split('')) =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-  const newArr = arr.map((e) => childrenSelector(e));
-  return newArr.flat();
+  return arr.flatMap((e) => childrenSelector(e));
 }
 
 /**
